@@ -117,7 +117,7 @@ function ResultsScreen({ stocks, query, onBack }) {
         />
 
         <div className="mt-4 flex items-center justify-between border-t border-gray-200 pt-4">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 border rounded">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
@@ -158,7 +158,7 @@ function ResultsScreen({ stocks, query, onBack }) {
             </button>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 border rounded">
             <span className="text-sm text-gray-600">Results per page</span>
             {ITEMS_PER_PAGE_OPTIONS.map((option) => (
               <button

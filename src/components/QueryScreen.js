@@ -52,9 +52,9 @@ function QueryScreen({ onSubmit, onBack }) {
           <div className="bg-blue-50 rounded-lg p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-4">Custom query example</h2>
             <div className="space-y-2 text-gray-700">
-              <p>Market Cap {'>'} 500 AND</p>
+              <p>Market Cap {'<'} 450 AND</p>
               <p>P/E {'<'} 15 AND</p>
-              <p>ROE {'>'} 22%</p>
+              <p>ROE {'>'} 22</p>
             </div>
             <div className="mt-4 text-sm text-gray-600">
               <p className="font-medium mb-2">Available Fields:</p>
