@@ -52,9 +52,9 @@ function QueryScreen({ onSubmit, onBack }) {
           <div className="bg-blue-50 rounded-lg p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-4">Custom query example</h2>
             <div className="space-y-2 text-gray-700">
-              <p>Market Cap {'<'} 450 AND</p>
-              <p>P/E {'<'} 15 AND</p>
-              <p>ROE {'>'} 22</p>
+              <p>Market Cap {'<'} 500 AND</p>
+              <p>P/E {'>'} 15 AND</p>
+              <p>ROE {'>'} 10</p>
             </div>
             <div className="mt-4 text-sm text-gray-600">
               <p className="font-medium mb-2">Available Fields:</p>
@@ -75,7 +75,7 @@ function QueryScreen({ onSubmit, onBack }) {
 
         {/* Checkbox and Buttons */}
         <div className="mt-6 space-y-4">
-          <label className="flex items-center space-x-2">
+          {/* <label className="flex items-center space-x-2">
             <input
               type="checkbox"
               checked={includeLatestResults}
@@ -83,7 +83,7 @@ function QueryScreen({ onSubmit, onBack }) {
               className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
             />
             <span className="text-gray-700">Only companies with Sep 2024 results</span>
-          </label>
+          </label> */}
 
           <div className="flex justify-between items-center">
             <button
@@ -94,11 +94,11 @@ function QueryScreen({ onSubmit, onBack }) {
               RUN THIS QUERY
             </button>
 
-            <button
+            {/* <button
               className="border border-gray-300 text-gray-600 px-4 py-2 rounded-md hover:bg-gray-50"
             >
               SHOW ALL RATIOS
-            </button>
+            </button> */}
           </div>
         </div>
 

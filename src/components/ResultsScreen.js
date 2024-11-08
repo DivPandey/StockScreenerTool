@@ -73,9 +73,9 @@ function ResultsScreen({ stocks, query, onBack }) {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-semibold">Query Results</h1>
-          <button className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
+          {/* <button className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
             SAVE THIS QUERY
-          </button>
+          </button> */}
         </div>
 
         <div className="mb-6 bg-gray-50 p-4 rounded-lg">
