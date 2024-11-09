@@ -16,20 +16,20 @@ function ResultsScreen({ stocks, query, onBack }) {
     const sorted = [...stocks].sort((a, b) => {
       const aValue = a[sortField];
       const bValue = b[sortField];
-      
+
       if (typeof aValue === 'number' && typeof bValue === 'number') {
-        return sortDirection === 'asc' 
-          ? aValue - bValue 
+        return sortDirection === 'asc'
+          ? aValue - bValue
           : bValue - aValue;
       }
-      
+
       const aStr = String(aValue).toLowerCase();
       const bStr = String(bValue).toLowerCase();
       return sortDirection === 'asc'
         ? aStr.localeCompare(bStr)
         : bStr.localeCompare(aStr);
     });
-    
+
     setSortedStocks(sorted);
   }, [stocks, sortField, sortDirection]);
 
@@ -93,16 +93,15 @@ function ResultsScreen({ stocks, query, onBack }) {
           sortDirection={sortDirection}
         />
 
-        <div className="mt-4 flex items-center justify-between border-t border-gray-200 dark:border-gray-600 pt-4">
+        <div className="mt-4 flex flex-col items-center gap-4 border-t border-gray-200 dark:border-gray-600 pt-4 lg:flex-row lg:justify-between lg:items-center">
           <div className="flex items-center space-x-2 border dark:border-gray-600 rounded">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`flex items-center px-3 py-1 rounded-md ${
-                currentPage === 1
-                  ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
+              className={`flex items-center px-3 py-1 rounded-md ${currentPage === 1
+                ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Previous
@@ -112,11 +111,10 @@ function ResultsScreen({ stocks, query, onBack }) {
               <button
                 key={pageNum}
                 onClick={() => handlePageChange(pageNum)}
-                className={`px-3 py-1 rounded-md min-w-[32px] ${
-                  currentPage === pageNum
-                    ? 'bg-indigo-500 text-white font-medium'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
+                className={`px-3 py-1 rounded-md min-w-[32px] ${currentPage === pageNum
+                  ? 'bg-indigo-500 text-white font-medium'
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
               >
                 {pageNum}
               </button>
@@ -125,11 +123,10 @@ function ResultsScreen({ stocks, query, onBack }) {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`flex items-center px-3 py-1 rounded-md ${
-                currentPage === totalPages
-                  ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
+              className={`flex items-center px-3 py-1 rounded-md ${currentPage === totalPages
+                ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
             >
               Next
               <ChevronRight className="w-4 h-4 ml-1" />
@@ -145,11 +142,10 @@ function ResultsScreen({ stocks, query, onBack }) {
                   setItemsPerPage(option);
                   setCurrentPage(1);
                 }}
-                className={`px-3 py-1 rounded-md min-w-[32px] ${
-                  itemsPerPage === option
-                    ? 'bg-indigo-500 text-white font-medium'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
+                className={`px-3 py-1 rounded-md min-w-[32px] ${itemsPerPage === option
+                  ? 'bg-indigo-500 text-white font-medium'
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
               >
                 {option}
               </button>

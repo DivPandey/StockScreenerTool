@@ -12,7 +12,7 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
     { key: 'revenueGrowth', label: 'Revenue Growth %', sortable: true, fullName: 'Revenue Growth Percentage' },
     { key: 'epsGrowth', label: 'EPS Growth %', sortable: true, fullName: 'Earnings Per Share Growth Percentage' },
     { key: 'currentRatio', label: 'Current Ratio', sortable: true, fullName: 'Current Ratio' },
-    { key: 'grossMargin', label: 'Gross Margin %', sortable: true, fullName: 'Gross Margin Percentage' }
+    { key: 'grossMargin', label: 'Gross Margin %', sortable: true, fullName: 'Gross Margin\nPercentage' }
   ];
 
   const renderSortIndicator = (columnKey) => {
@@ -39,8 +39,8 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
   };
 
   return (
-    <div className="-mx-4 sm:mx-0">
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 mt-14">
+    <div className="-mx-4 sm:mx-0 overflow-x-auto flex">
+      <table className="divide-y divide-gray-200 dark:divide-gray-700 mt-14">
         <thead className="bg-gray-50 dark:bg-gray-800">
           <tr>
             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
@@ -57,7 +57,7 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
                   {column.label}
                   {column.sortable && renderSortIndicator(column.key)}
                   {column.sortable && (
-                    <div className={`invisible group-hover:visible absolute bottom-full left-0 mb-1 px-2 py-1 bg-gray-500 dark:bg-gray-700 text-white text-xs rounded shadow-lg whitespace-nowrap`}>
+                    <div className={`invisible group-hover:visible absolute bottom-full left-0 mb-1 px-2 py-1 bg-gray-500 dark:bg-gray-700 text-white text-xs rounded shadow-lg whitespace-pre`}>
                       {column.fullName}
                     </div>
                   )}
@@ -72,7 +72,7 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
               <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
                 {startIndex + idx + 1}
               </td>
-              {columns.map((column) => (
+              {columns.map((column, i) => (
                 <td
                   key={column.key}
                   className={`px-4 py-3 text-sm ${column.key === 'ticker'
