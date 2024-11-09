@@ -28,7 +28,7 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
 
   const formatValue = (value, column) => {
     if (typeof value !== 'number') return value;
-    
+
     if (column.key === 'marketCap') {
       return value.toFixed(2);
     } else if (['roe', 'dividendYield', 'revenueGrowth', 'epsGrowth', 'grossMargin'].includes(column.key)) {
@@ -39,27 +39,25 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
   };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+    <div className="-mx-4 sm:mx-0">
+      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 mt-14">
         <thead className="bg-gray-50 dark:bg-gray-800">
           <tr>
             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
               S.No.
             </th>
-            {columns.map((column) => (
+            {columns.map((column, i) => (
               <th
                 key={column.key}
                 onClick={() => column.sortable && onSort(column.key)}
-                className={`px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider group relative ${
-                  column.sortable ? 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700' : ''
-                }`}
-                title={column.sortable ? column.fullName : ''}
+                className={`px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider group relative ${column.sortable ? 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700' : ''
+                  }`}
               >
                 <div className="flex items-center">
                   {column.label}
                   {column.sortable && renderSortIndicator(column.key)}
                   {column.sortable && (
-                    <div className="invisible group-hover:visible absolute top-full left-0 mt-1 px-2 py-1 bg-gray-800 dark:bg-gray-700 text-white text-xs rounded shadow-lg whitespace-nowrap z-10">
+                    <div className={`invisible group-hover:visible absolute bottom-full left-0 mb-1 px-2 py-1 bg-gray-500 dark:bg-gray-700 text-white text-xs rounded shadow-lg whitespace-nowrap`}>
                       {column.fullName}
                     </div>
                   )}
@@ -77,11 +75,10 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
               {columns.map((column) => (
                 <td
                   key={column.key}
-                  className={`px-4 py-3 text-sm ${
-                    column.key === 'ticker' 
-                      ? 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300' 
-                      : 'text-gray-900 dark:text-gray-100'
-                  }`}
+                  className={`px-4 py-3 text-sm ${column.key === 'ticker'
+                    ? 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300'
+                    : 'text-gray-900 dark:text-gray-100'
+                    }`}
                 >
                   {formatValue(stock[column.key], column)}
                 </td>
