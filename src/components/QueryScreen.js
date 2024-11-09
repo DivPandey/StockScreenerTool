@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeft } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 function QueryScreen({ onSubmit, onBack }) {
   const [query, setQuery] = useState('');
@@ -20,8 +21,11 @@ function QueryScreen({ onSubmit, onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow p-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 relative">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <h1 className="text-2xl text-gray-900 font-semibold mb-6">Create a Search Query</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

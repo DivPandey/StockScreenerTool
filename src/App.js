@@ -3,6 +3,7 @@ import LandingScreen from './components/LandingScreen';
 import QueryScreen from './components/QueryScreen.js';
 import ResultsScreen from './components/ResultsScreen';
 import { parseCSV, filterStocks } from './lib/utils';
+import { ThemeProvider } from 'next-themes'
 
 function App() {
   const [screen, setScreen] = useState('landing');
@@ -31,24 +32,26 @@ function App() {
   };
 
   return (
-    <main>
-      {screen === 'landing' && (
-        <LandingScreen onStart={() => setScreen('query')} />
-      )}
-      {screen === 'query' && (
-        <QueryScreen 
-          onSubmit={handleQuerySubmit}
-          onBack={() => setScreen('landing')}
-        />
-      )}
-      {screen === 'results' && (
-        <ResultsScreen
-          stocks={filteredStocks}
-          query={executedQuery}
-          onBack={() => setScreen('query')}
-        />
-      )}
-    </main>
+    <ThemeProvider attribute="class">
+      <main>
+        {screen === 'landing' && (
+          <LandingScreen onStart={() => setScreen('query')} />
+        )}
+        {screen === 'query' && (
+          <QueryScreen 
+            onSubmit={handleQuerySubmit}
+            onBack={() => setScreen('landing')}
+          />
+        )}
+        {screen === 'results' && (
+          <ResultsScreen
+            stocks={filteredStocks}
+            query={executedQuery}
+            onBack={() => setScreen('query')}
+          />
+        )}
+      </main>
+    </ThemeProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import StockTable from './StockTable';
+import ThemeToggle from './ThemeToggle';
 
 const ITEMS_PER_PAGE_OPTIONS = [10, 20, 25, 50];
 
@@ -69,43 +70,19 @@ function ResultsScreen({ stocks, query, onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm p-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
+      <div className="max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-semibold">Query Results</h1>
-          {/* <button className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
-            SAVE THIS QUERY
-          </button> */}
-        </div>
-
-        <div className="mb-6 bg-gray-50 p-4 rounded-lg">
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-sm font-medium text-gray-600">Executed Query:</h2>
-          </div>
-          <div className="bg-white p-3 rounded border border-gray-200">
-            {query.split('AND').map((condition, index) => (
-              <div key={index} className="text-sm text-gray-800">
-                {condition.trim()}
-                {index < query.split('AND').length - 1 && (
-                  <span className="text-gray-500"> AND</span>
-                )}
-              </div>
-            ))}
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Query Results</h1>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
           </div>
         </div>
 
         <div className="flex justify-between items-center mb-4">
-          <span className="text-gray-600">
+          <span className="text-gray-600 dark:text-gray-300">
             {sortedStocks.length} results found: Showing {startIndex + 1}-{Math.min(endIndex, sortedStocks.length)} of {sortedStocks.length}
           </span>
-          <div className="flex space-x-3">
-            <button className="border border-gray-300 text-gray-600 px-3 py-1.5 rounded-md hover:bg-gray-50">
-              EXPORT
-            </button>
-            <button className="border border-gray-300 text-gray-600 px-3 py-1.5 rounded-md hover:bg-gray-50">
-              EDIT COLUMNS
-            </button>
-          </div>
         </div>
 
         <StockTable
@@ -116,15 +93,15 @@ function ResultsScreen({ stocks, query, onBack }) {
           sortDirection={sortDirection}
         />
 
-        <div className="mt-4 flex items-center justify-between border-t border-gray-200 pt-4">
-          <div className="flex items-center space-x-2 border rounded">
+        <div className="mt-4 flex items-center justify-between border-t border-gray-200 dark:border-gray-600 pt-4">
+          <div className="flex items-center space-x-2 border dark:border-gray-600 rounded">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               className={`flex items-center px-3 py-1 rounded-md ${
                 currentPage === 1
-                  ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-gray-600 hover:bg-gray-100'
+                  ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
@@ -138,19 +115,20 @@ function ResultsScreen({ stocks, query, onBack }) {
                 className={`px-3 py-1 rounded-md min-w-[32px] ${
                   currentPage === pageNum
                     ? 'bg-indigo-500 text-white font-medium'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 {pageNum}
               </button>
             ))}
+
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
               className={`flex items-center px-3 py-1 rounded-md ${
                 currentPage === totalPages
-                  ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-gray-600 hover:bg-gray-100'
+                  ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
               Next
@@ -158,8 +136,8 @@ function ResultsScreen({ stocks, query, onBack }) {
             </button>
           </div>
 
-          <div className="flex items-center space-x-2 border rounded">
-            <span className="text-sm text-gray-600">Results per page</span>
+          <div className="flex items-center space-x-2 border dark:border-gray-600 rounded">
+            <span className="text-sm text-gray-600 dark:text-gray-300">Results per page</span>
             {ITEMS_PER_PAGE_OPTIONS.map((option) => (
               <button
                 key={option}
@@ -170,7 +148,7 @@ function ResultsScreen({ stocks, query, onBack }) {
                 className={`px-3 py-1 rounded-md min-w-[32px] ${
                   itemsPerPage === option
                     ? 'bg-indigo-500 text-white font-medium'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 {option}
@@ -181,7 +159,7 @@ function ResultsScreen({ stocks, query, onBack }) {
 
         <button
           onClick={onBack}
-          className="mt-6 flex items-center text-indigo-500 hover:text-indigo-600"
+          className="mt-6 flex items-center text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           <ChevronLeft className="w-5 h-5" />
           <span>Go Back</span>

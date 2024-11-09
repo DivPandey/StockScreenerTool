@@ -3,16 +3,16 @@ import { ChevronUp, ChevronDown } from 'lucide-react';
 
 function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
   const columns = [
-    { key: 'ticker', label: 'Name' },
-    { key: 'marketCap', label: 'Market Cap Rs.Cr.' },
-    { key: 'peRatio', label: 'P/E' },
-    { key: 'roe', label: 'ROE %' },
-    { key: 'debtToEquity', label: 'Debt/Equity' },
-    { key: 'dividendYield', label: 'Div Yld %' },
-    { key: 'revenueGrowth', label: 'Revenue Growth %' },
-    { key: 'epsGrowth', label: 'EPS Growth %' },
-    { key: 'currentRatio', label: 'Current Ratio' },
-    { key: 'grossMargin', label: 'Gross Margin %' }
+    { key: 'ticker', label: 'Name', sortable: false, fullName: 'Name' },
+    { key: 'marketCap', label: 'Market Cap Rs.Cr.', sortable: true, fullName: 'Market Capitalization in Crores (Rs.)' },
+    { key: 'peRatio', label: 'P/E', sortable: true, fullName: 'Price to Earnings Ratio' },
+    { key: 'roe', label: 'ROE %', sortable: true, fullName: 'Return on Equity Percentage' },
+    { key: 'debtToEquity', label: 'Debt/Equity', sortable: true, fullName: 'Debt to Equity Ratio' },
+    { key: 'dividendYield', label: 'Div Yld %', sortable: true, fullName: 'Dividend Yield Percentage' },
+    { key: 'revenueGrowth', label: 'Revenue Growth %', sortable: true, fullName: 'Revenue Growth Percentage' },
+    { key: 'epsGrowth', label: 'EPS Growth %', sortable: true, fullName: 'Earnings Per Share Growth Percentage' },
+    { key: 'currentRatio', label: 'Current Ratio', sortable: true, fullName: 'Current Ratio' },
+    { key: 'grossMargin', label: 'Gross Margin %', sortable: true, fullName: 'Gross Margin Percentage' }
   ];
 
   const renderSortIndicator = (columnKey) => {
@@ -40,37 +40,47 @@ function StockTable({ stocks, startIndex, onSort, sortField, sortDirection }) {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead>
+      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <thead className="bg-gray-50 dark:bg-gray-800">
           <tr>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
               S.No.
             </th>
             {columns.map((column) => (
               <th
                 key={column.key}
-                onClick={() => onSort(column.key)}
-                className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-50"
+                onClick={() => column.sortable && onSort(column.key)}
+                className={`px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider group relative ${
+                  column.sortable ? 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700' : ''
+                }`}
+                title={column.sortable ? column.fullName : ''}
               >
                 <div className="flex items-center">
                   {column.label}
-                  {renderSortIndicator(column.key)}
+                  {column.sortable && renderSortIndicator(column.key)}
+                  {column.sortable && (
+                    <div className="invisible group-hover:visible absolute top-full left-0 mt-1 px-2 py-1 bg-gray-800 dark:bg-gray-700 text-white text-xs rounded shadow-lg whitespace-nowrap z-10">
+                      {column.fullName}
+                    </div>
+                  )}
                 </div>
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
           {stocks.map((stock, idx) => (
-            <tr key={stock.id} className="hover:bg-gray-50">
-              <td className="px-4 py-3 text-sm text-gray-900">
+            <tr key={stock.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+              <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
                 {startIndex + idx + 1}
               </td>
               {columns.map((column) => (
                 <td
                   key={column.key}
                   className={`px-4 py-3 text-sm ${
-                    column.key === 'ticker' ? 'text-indigo-600 hover:text-indigo-900' : 'text-gray-900'
+                    column.key === 'ticker' 
+                      ? 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300' 
+                      : 'text-gray-900 dark:text-gray-100'
                   }`}
                 >
                   {formatValue(stock[column.key], column)}
