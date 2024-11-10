@@ -117,10 +117,10 @@ ROE > 10`;
         </div>
 
         {/* Buttons */}
-        <div className="mt-6 flex justify-between items-center">
+        <div className="mt-6 flex md:justify-between md:items-center flex-col md:flex-row gap-3 md:gap-0">
           <button
             onClick={handleSubmit}
-            className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex items-center"
+            className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex items-center justify-center md:justify-start"
           >
             <span className="mr-2">►</span>
             RUN THIS QUERY
@@ -136,28 +136,28 @@ ROE > 10`;
 
         {/* Financial Metrics and Operators Gallery */}
         {showRatioGallery && (
-          <div className="mt-4 p-4 bg-gray-800 rounded-lg">
+          <div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             {/* Financial Metrics */}
             <div className="grid grid-cols-3 gap-2">
               {financialMetrics.map((metric) => (
                 <button
                   key={metric}
                   onClick={() => handleMetricClick(metric)}
-                  className="text-left px-4 py-2 border border-gray-700 rounded-md text-gray-300 hover:bg-gray-700 hover:border-gray-600 transition-colors"
+                  className="text-left px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
                 >
                   {metric}
                 </button>
               ))}
             </div>
 
-            {/* Operators - Separated by a divider */}
-            <div className="mt-4 pt-4 border-t border-gray-700">
+            {/* Operators */}
+            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="flex gap-2">
                 {operators.map((operator) => (
                   <button
                     key={operator}
                     onClick={() => handleOperatorClick(operator)}
-                    className="px-6 py-2 border border-gray-700 rounded-md text-gray-300 hover:bg-gray-700 hover:border-gray-600 transition-colors font-mono"
+                    className="px-6 py-2 border border-gray-200 dark:border-gray-700 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors font-mono"
                   >
                     {operator}
                   </button>
