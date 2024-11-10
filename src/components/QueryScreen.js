@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Copy, Check, Beaker } from 'lucide-react';
+import { ChevronLeft, Copy, Check, Beaker, Info } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import RangesPopup from './RangesPopup';
 
 function QueryScreen({ onSubmit, onBack }) {
   const [query, setQuery] = useState('');
@@ -8,6 +9,7 @@ function QueryScreen({ onSubmit, onBack }) {
   const [includeLatestResults, setIncludeLatestResults] = useState(false);
   const [showRatioGallery, setShowRatioGallery] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showRangesPopup, setShowRangesPopup] = useState(false);
 
   const exampleQuery = `Market Cap < 500 AND
 P/E > 15 AND
@@ -139,6 +141,19 @@ ROE > 10`;
         {/* Financial Metrics and Operators Gallery */}
         {showRatioGallery && (
           <div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Financial Metrics
+              </h3>
+              <button
+                onClick={() => setShowRangesPopup(true)}
+                className="p-2 text-gray-500 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors"
+                title="Show value ranges"
+              >
+                <Info className="w-5 h-5" />
+              </button>
+            </div>
+
             {/* Financial Metrics */}
             <div className="grid grid-cols-3 gap-2">
               {financialMetrics.map((metric) => (
@@ -179,6 +194,11 @@ ROE > 10`;
           </button>
         </div>
       </div>
+
+      <RangesPopup 
+        isOpen={showRangesPopup} 
+        onClose={() => setShowRangesPopup(false)} 
+      />
     </div>
   );
 }
