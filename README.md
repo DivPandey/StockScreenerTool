@@ -3,7 +3,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://stock-screener-tool-rosy.vercel.app/)
 [![Watch Demo Video](https://img.shields.io/badge/Watch-Demo_Video-red.svg)](https://youtu.be/your-demo-video)
 
-[🌐 Live Demo](https://stock-screener-demo.vercel.app) | [📺 Watch Demo Video](https://youtu.be/your-demo-video)
+[🌐 Live Demo](https://stock-screener-tool-rosy.vercel.app/) | [📺 Watch Demo Video](https://youtu.be/your-demo-video)
 
 A modern web application for screening stocks based on financial metrics. Built with React and Next.js, this tool provides an intuitive interface for creating custom stock filters and analyzing market data.
 
