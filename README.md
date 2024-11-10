@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Stock Screener
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://stock-screener-demo.vercel.app)
+[![Watch Demo Video](https://img.shields.io/badge/Watch-Demo_Video-red.svg)](https://youtu.be/your-demo-video)
 
-## Available Scripts
+[🌐 Live Demo](https://stock-screener-demo.vercel.app) | [📺 Watch Demo Video](https://youtu.be/your-demo-video)
 
-In the project directory, you can run:
+A modern web application for screening stocks based on financial metrics. Built with React and Next.js, this tool provides an intuitive interface for creating custom stock filters and analyzing market data.
 
-### `npm start`
+## 🎯 Quick Preview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<div align="center">
+  <img src="/api/placeholder/800/400" alt="Stock Screener Demo" />
+  <p><i>Interactive stock screening with real-time filtering</i></p>
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+### Query Builder
+- Create custom screening criteria using multiple financial metrics
+- Intuitive syntax with support for multiple conditions
+- Real-time validation and results
+- Quick metric insertion through the "Show All Ratios" gallery
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Supported Metrics
+- Market Capitalization
+- Price to Earnings (P/E) Ratio
+- Return on Equity (ROE)
+- And many more financial indicators
 
-### `npm run build`
+### Results View
+- Sortable columns for easy data analysis
+- Adjustable pagination controls
+- Interactive column headers with metric descriptions
+- Dark/light mode theme toggle
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/stock-screener.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
+```bash
+cd stock-screener
+npm install
+```
 
-### `npm run eject`
+3. Start the development server:
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Creating a Query
+1. Click "Create New Screen" on the landing page
+2. Enter your query using the following format:
+   ```
+   Market Cap < 500 AND P/E > 15 AND ROE > 10
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Query Syntax
+- Use `AND` to combine multiple conditions
+- Supported operators: <, >, >=, <=
+- Spaces between metrics, operators, and values are required
+- Example: `Market Cap < 500 AND P/E > 15`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Structure
 
-## Learn More
+```
+stock-screener/
+├── src/
+│   ├── components/  # React components
+│   ├── lib/         # Utility functions
+│   ├── pages/       # Next.js pages
+│   └── styles/      # CSS styles
+└── public/
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The application is built with:
+- React for the frontend
+- Next.js for page routing and server-side rendering
+- Modern JavaScript features
+- Responsive design principles
 
-### Code Splitting
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the LICENSE file for details.

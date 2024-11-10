@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Copy, Check } from 'lucide-react';
+import { ChevronLeft, Copy, Check, Beaker } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 function QueryScreen({ onSubmit, onBack }) {
@@ -61,57 +61,59 @@ ROE > 10`;
       </div>
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl text-gray-900 dark:text-white font-bold mb-6">Create a Search Query</h1>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Left Column - Query Input */}
-          <div className="space-y-4">
+          <div className="flex flex-col h-full">
             <label className="block text-gray-700 dark:text-gray-300 text-base font-medium mb-2">
               Query
             </label>
-            <textarea
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setError(null);
-              }}
-              className={`w-full h-48 p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none dark:bg-gray-900 dark:border-gray-700 dark:text-white ${
-                error ? 'border-red-500' : 'border-gray-400'
-              }`}
-              placeholder="Enter your query here..."
-            />
-            {error && (
-              <div className="text-red-500 text-sm mt-1">
-                {error}
-              </div>
-            )}
+            <div className="flex-1 flex flex-col">
+              <textarea
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setError(null);
+                }}
+                className={`flex-1 w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none dark:bg-gray-900 dark:border-gray-700 dark:text-white ${error ? 'border-red-500' : 'border-gray-400'
+                  }`}
+                placeholder="Enter your query here..."
+              />
+              {error && (
+                <div className="text-red-500 text-sm mt-1">
+                  {error}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Right Column - Example */}
-          <div className="bg-blue-50 dark:bg-gray-700 rounded-lg p-6 border border-blue-300">
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Custom query example</h2>
-            
-            <div className="relative bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-400 dark:border-gray-600">
-              <button
-                onClick={handleCopyClick}
-                className="absolute top-2 right-2 p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                title="Copy to clipboard"
-              >
-                {copied ? (
-                  <Check className="w-4 h-4 text-green-500" />
-                ) : (
-                  <Copy className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                )}
-              </button>
+          <div className="flex flex-col h-full">
+            <h2 className="block text-gray-700 dark:text-gray-300 text-base font-medium mb-2">Custom query example</h2>
+            <div className="flex-1 bg-blue-50 dark:bg-gray-700 rounded-lg p-6 border border-blue-300">
+              <div className="relative bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-400 dark:border-gray-600">
+                <button
+                  onClick={handleCopyClick}
+                  className="absolute top-2 right-2 p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  title="Copy to clipboard"
+                >
+                  {copied ? (
+                    <Check className="w-4 h-4 text-green-500" />
+                  ) : (
+                    <Copy className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                  )}
+                </button>
 
-              <div className="space-y-2 text-gray-700 dark:text-gray-300 font-mono text-sm">
-                <p>Market Cap {'<'} 500 AND</p>
-                <p>P/E {'>'} 15 AND</p>
-                <p>ROE {'>'} 10</p>
+                <div className="space-y-2 text-gray-700 dark:text-gray-300 font-mono text-sm">
+                  <p>Market Cap {'<'} 500 AND</p>
+                  <p>P/E {'>'} 15 AND</p>
+                  <p>ROE {'>'} 10</p>
+                </div>
               </div>
-            </div>
 
-            <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-              Click the copy icon to copy the example query
+              <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                Click the copy icon to copy the example query
+              </div>
             </div>
           </div>
         </div>
@@ -125,11 +127,11 @@ ROE > 10`;
             <span className="mr-2">►</span>
             RUN THIS QUERY
           </button>
-
           <button
             onClick={() => setShowRatioGallery(!showRatioGallery)}
-            className="border border-gray-700 text-gray-300 px-4 py-2 rounded-md hover:bg-gray-800"
+            className="flex items-center justify-center px-6 py-2.5 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-50 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-colors duration-200"
           >
+            <Beaker className="w-4 h-4 mr-2" />
             {showRatioGallery ? 'CLOSE GALLERY' : 'SHOW ALL RATIOS'}
           </button>
         </div>
