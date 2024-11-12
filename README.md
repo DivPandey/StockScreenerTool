@@ -10,7 +10,7 @@
 [![Watch Demo Video](https://img.shields.io/badge/Watch-Demo_Video-red.svg)](https://youtu.be/your-demo-video)
 
 [🌐 Live Demo](https://stock-screener-tool-rosy.vercel.app/) | [📺 Watch Demo Video](https://youtu.be/your-demo-video)
->>>>>>> 926d8e759fa35fe0f815c91606a556570aef17de
+
 
 A modern web application for screening stocks based on financial metrics. Built with React and Next.js, this tool provides an intuitive interface for creating custom stock filters and analyzing market data.
 
@@ -103,8 +103,3 @@ The application is built with:
 4. Push to the branch
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-=======
->>>>>>> 926d8e759fa35fe0f815c91606a556570aef17de
